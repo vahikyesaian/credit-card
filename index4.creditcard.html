@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .fp{
+            width: 100%;
+            height: 130vh;
+            /* border: 5px solid black; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ddeefc;
+        }
+        .box{
+            width: 40%;
+            height:60%;
+            /* border: 1px solid black; */
+            border-radius: 10px;
+            position: relative;
+            background-color: white;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: center;
+            box-shadow: 0 5px 20px 1px #022847;
+        }
+        #card{
+            width: 70%;
+            height: 40%;
+            /* border: 1px solid black; */
+            border-radius: 10px;
+            position: absolute;
+            top: 0;left: 50%;
+            transform: translate(-50% ,-50%);
+            background-image: url(img/9.jpeg);
+            background-position: center;
+            background-size: cover;
+            box-shadow: 0 20px 60px 0 rgb(14 42 90 / 55%);        
+            transition: 2s; 
+            backface-visibility: hidden;
+            
+        }
+        #backcard{
+            width: 70%;
+            height: 40%;
+            /* border: 1px solid black; */
+            border-radius: 10px;
+            position: absolute;
+            top: 0;left: 50%;
+            transform: translate(-50% ,-50%);
+            background-position: center;
+            background-size: cover;
+            box-shadow: 0 20px 60px 0 rgb(14 42 90 / 55%);   
+            /* z-index: 999; */
+            background-image: url(img/9.jpeg);
+            background-position: center;
+            background-size: cover;
+            transition: 2s;
+        }
+        #backcard::after{
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;left: 0;
+            background-color: rgba(0, 0, 0, 0.4);
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+        }
+        #backcard>div{
+            width: 100%;
+            height: 50px;
+            background-color: black;
+            margin-top: 30px;
+          
+        }
+        #backcard>*{
+            position: relative;
+            z-index: 1000;
+        }
+        #backcard>label{
+            color: rgba(255, 255, 255, 0.811);
+            position: absolute;
+            right: 30px;top: 90px;
+            font-size: 20px;
+
+        }
+        #cvv2{
+            width: 90%;
+            height: 40px;
+            border-radius: 5px;
+            background-color: whitesmoke;
+            margin: 35px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+        }
+        #backcard>img{
+            width: 70px;
+            height: 50px;
+            margin: -15px 80%;
+        }
+        /* #card:hover{
+            transform:translate(-50% ,-50%) rotateY(180deg);
+        } */
+        #card::before{
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;left: 0;
+            background-color: rgba(0, 0, 0, 0.4);
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+        }
+        #card>img{
+            width: 60px;
+            height: 50px;
+            margin: 20px;
+            position: relative;
+            z-index: 99;
+        }
+        #card>img:nth-of-type(2){
+            width: 90px;
+            height: 50px;
+            margin-left: 49%;
+            position: relative;
+            z-index: inherit;
+        }
+        #card>div{
+            width: 100%;
+            /* background-color: #2364d2; */
+            height: 50px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: inherit;
+        }
+        #card>div>span{
+            width: 80px;
+            /* border: 1px solid black; */
+            display: flex;
+            height: 40px;
+            justify-content: center;
+            align-items: center;
+            font-size: 25px;
+            color: white;
+            margin: 0 8px;
+            font-weight: bolder;
+            box-shadow: 1px 2px 15px rgba(0, 0, 0, 0.368);
+            border-radius: 5px;
+            
+        }
+        .box>label{
+            width: 100%;
+            display: block;
+            /* background-color: aqua; */
+            padding-left: 25px;
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            text-transform: capitalize;
+            font-size: 17px;
+            margin: 5px;
+        }
+        .box>input{
+            width: 90%;
+            height: 50px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            font-size: 25px;
+            padding-left: 10px;
+            border: 1px solid rgb(201, 195, 195);
+            transition: .4s;
+        }
+        .box>input:hover{
+            border-color: rgba(0, 0, 255, 0.681)
+        }
+        .box>input:focus{
+            outline:1px solid rgba(0, 0, 255, 0.681);
+            box-shadow: -5px 5px 25px 0 rgba(0, 0, 0, 0.24);
+
+        }
+        .box>div{
+            width: 100%;
+            /* background-color: aqua; */
+            display: flex;
+            justify-content: center;
+            padding-right: 25px;
+        }
+        .box>div>select{
+            width: 150px;
+            height: 50px;
+            border-radius: 5px;
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            text-transform: capitalize;
+            font-size: 18px;
+            padding-left: 10px;
+            border: 1px solid rgb(201, 195, 195);
+            transition: .4s;
+
+        }
+        #expire:hover{
+            border-color: rgba(0, 0, 255, 0.681)
+            
+        }
+        #expire:focus{
+            outline:1px solid rgba(0, 0, 255, 0.681);
+            box-shadow: -5px 5px 25px 0 rgba(0, 0, 0, 0.24);
+        }
+        #expire>option{
+            font-size: 17px;
+            
+        }
+        #cardyear{
+            margin-left: 30px;
+        }
+        #cardyear:hover{
+            border-color: rgba(0, 0, 255, 0.681)   
+        }
+        #cardyear:focus{
+            outline:1px solid rgba(0, 0, 255, 0.681);
+            box-shadow: -5px 5px 25px 0 rgba(0, 0, 0, 0.24);            
+        }
+        #info{
+            position: relative;
+        }
+        #info>label{
+            /* display: block; */
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            text-transform: capitalize;
+            font-size: 17px;
+            position: absolute;
+            top: -23px;right: 27%;
+
+        }
+        #info>input{
+            width: 150px;
+            height: 50px;
+            border-radius: 5px;
+            margin-left: 40px;
+            font-size: 25px;
+            padding-left: 10px;
+            border: 1px solid rgb(201, 195, 195);
+            padding-bottom: 3.5px;
+            transition: .4s;
+        }
+        #info>input:hover{
+            border-color: rgba(0, 0, 255, 0.681)
+            
+        }
+        #info>input:focus{
+            outline:1px solid rgba(0, 0, 255, 0.681);
+            box-shadow: -5px 5px 25px 0 rgba(0, 0, 0, 0.24);
+        }
+        #btn{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 90%;
+            height: 60px;
+            position: absolute;
+            bottom: 40px;
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            text-transform: capitalize;
+            font-size: 23px;
+            color: white;
+            background-color: #2364d2;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 1px 10px #2364d2;
+            cursor: pointer;
+        }
+        #card>section{
+            /* border: 1px solid black; */
+            height: 50px;
+            display: inline-block;
+            border-radius: 5px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 0 10px;
+            cursor: pointer;
+        }
+        #card>section:nth-of-type(1){
+            width: 50%;
+            position: absolute;
+            bottom: 20px;left: 20px;          
+        }
+        #card>section:nth-of-type(1)>*{
+            width: 100%;
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+        }
+        #card>section:nth-of-type(1)>p{
+            text-transform: capitalize;
+            color: rgba(245, 245, 245, 0.632);
+            font-size: 14px;
+        }
+        #card>section:nth-of-type(1)>h3{
+            text-transform: uppercase;
+            color: white;
+            font-size: 16px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        #card>section:nth-of-type(2){
+            width: 30%;
+            position: absolute;
+            bottom: 20px;right: 20px;
+        }
+        #card>section:nth-of-type(2)>*{
+            width: 100%;
+            padding: 0 50px;
+        }
+        #card>section:nth-of-type(2)>p{
+            text-transform: capitalize;
+            color: rgba(245, 245, 245, 0.514);
+            font-size: 15px;
+        }
+        #card>section:nth-of-type(2)>h3{
+            text-transform: uppercase;
+            color: white;
+            font-size: 16px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+    </style>
+</head>
+<body>
+    <section class="fp">
+        <div class="box">
+            <section id="backcard">
+                <div></div>
+                <label for="cvv2">cvv2</label>
+                <section id="cvv2"></section>
+                <img src="img/visa.png" alt="">
+            </section>
+            <section id="card">
+                <img src="img/chip.png" alt="">
+                <img src="img/visa.png" alt="">
+                <div>
+                    <span id="spn"># # # #</span>
+                    <span id="dl"># # # #</span>
+                    <span id="df"># # # #</span>
+                    <span id="dp"># # # #</span>
+                </div>
+                <section>
+                    <p>card holder</p>
+                    <h3 id="name">full name</h3>
+                </section>
+                <section>
+                    <p>expires</p>
+                    <h3 id="date">mm/yy</h3>
+                </section>
+            </section>
+            <label for="cardnumber">card number</label>
+            <input type="text" id="cardnumber">
+            <label for="cardholder">card holders</label>
+            <input type="text" id="cardholder">
+            <label for="expire">expiration date</label>
+            <div id="info">
+                <select id="expire">
+                    <option value="month" disabled selected>month</option>
+                    <option value="01">01</option>
+                    <option value="02">02</option>
+                    <option value="03">03</option>
+                    <option value="04">04</option>
+                    <option value="05">05</option>
+                    <option value="06">06</option>
+                    <option value="07">07</option>
+                    <option value="08">08</option>
+                    <option value="09">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+                <select id="cardyear">
+                    <option value="year" disabled selected>year</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                    <option value="2027">2027</option>
+                    <option value="2028">2028</option>
+                    <option value="2029">2029</option>
+                    <option value="2030">2030</option>
+                    <option value="2031">2031</option>
+                    <option value="2032">2032</option>
+                    <option value="2033">2033</option>
+                </select>
+                <label for="cvv">cvv2</label>
+                <input type="password" id="cvv" onfocusin="_top()" onfocusout="_bottom()">
+            </div>
+                <button id="btn">submit</button>
+
+
+
+        </div>
+    </section>
+</body>
+<script>
+    document.getElementById('cardnumber').addEventListener('input',(e)=>{
+        let v =e.target.value
+        let x= v. substring(0,4)
+        let y = v.substring(4,8)
+        let s = v.substring(8,12)
+        let r = v.substring(12,16)
+        document.getElementById('spn').innerHTML= x
+        document.getElementById('dl').innerHTML= y
+        document.getElementById('df').innerHTML= s
+        document.getElementById('dp').innerHTML= r
+        if(v.length >= 16){
+            document.getElementById('cardholder').focus()
+            let mine = v.substring(0,16)
+            document.getElementById('cardnumber').value=mine
+        }
+    })
+    document.getElementById('cardholder').addEventListener('input',(e)=>{
+        let self= e.target.value
+        document.getElementById('name').innerHTML=self
+    })
+    document.getElementById('expire').addEventListener('input',(e)=>{
+        let m = e.target.value
+        document.getElementById('date').innerHTML=m + '/'
+
+    })
+    document.getElementById('cardyear').addEventListener('input',(e)=>{
+        let year = e.target.value
+        document.getElementById('date').innerHTML+=year
+
+    })
+    let cv =document.getElementById('cvv')
+    function _top(){
+        document.getElementById('card').style.transform='perspective(1000px) translate(-50% ,-50%) rotatey(180deg)'
+        document.getElementById('backcard').style.transform='perspective(1000px) translate(-50% ,-50%) rotatey(0deg)'
+
+    }
+    
+    function _bottom(){
+        document.getElementById('card').style.transform='perspective(1000px) translate(-50% ,-50%) rotatey(0deg)'
+        document.getElementById('backcard').style.transform='perspective(1000px) translate(-50% ,-50%) rotatey(-180deg)'
+    }
+    cv.addEventListener('input',(e)=>{
+        let rem = e.target.value
+        document.getElementById('cvv2').innerHTML=rem
+    
+    })
+    document.getElementById('btn').addEventListener('click',()=>{
+        alert('your payment was succesful')
+    })
+
+    
+
+
+
+
+
+</script>
+</html>
